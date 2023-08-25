@@ -12,7 +12,7 @@
 		17B7C0512A99344300E780CD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C0502A99344300E780CD /* Item.swift */; };
 		17B7C0532A99344400E780CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B7C0522A99344400E780CD /* Assets.xcassets */; };
 		17B7C0562A99344400E780CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B7C0552A99344400E780CD /* Preview Assets.xcassets */; };
-		17B7C05E2A99388600E780CD /* Camera-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 17B7C05D2A99388600E780CD /* Camera-SwiftUI */; };
+		17B7C0632A9945C300E780CD /* Camera-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 17B7C0622A9945C300E780CD /* Camera-SwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17B7C05E2A99388600E780CD /* Camera-SwiftUI in Frameworks */,
+				17B7C0632A9945C300E780CD /* Camera-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +91,7 @@
 			);
 			name = Golf;
 			packageProductDependencies = (
-				17B7C05D2A99388600E780CD /* Camera-SwiftUI */,
+				17B7C0622A9945C300E780CD /* Camera-SwiftUI */,
 			);
 			productName = Golf;
 			productReference = 17B7C0492A99344300E780CD /* Golf.app */;
@@ -290,6 +290,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Golf/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Путошке необходима камера";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -321,6 +322,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Golf/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Путошке необходима камера";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -371,7 +373,7 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		17B7C05D2A99388600E780CD /* Camera-SwiftUI */ = {
+		17B7C0622A9945C300E780CD /* Camera-SwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "Camera-SwiftUI";
 		};
