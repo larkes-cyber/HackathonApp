@@ -8,5 +8,14 @@
         android:id="@+id/cameraScreenFragment"
         android:name="com.example.golfappviews.presentation.fragment.camera_screen.CameraScreenFragment"
         android:label="fragment_camera_screen"
-        tools:layout="@layout/fragment_camera_screen" />
+        tools:layout="@layout/fragment_camera_screen" >
+        <action
+            android:id="@+id/action_cameraScreenFragment_to_detailScreenFragment"
+            app:destination="@id/detailScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailScreenFragment"
+        android:name="com.example.golfappviews.presentation.fragment.detail_screen.DetailScreenFragment"
+        android:label="fragment_detail_screen"
+        tools:layout="@layout/fragment_detail_screen" />
 </navigation>

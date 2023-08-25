@@ -29,7 +29,7 @@ android {
             buildPython "/usr/local/bin/python3"
             pip {
                 // A requirement specifier, with or without a version number:
-                install "numpy"
+                install "opencv-python"
             }
         }
     }
@@ -78,6 +78,11 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.42")
     kapt("com.google.dagger:hilt-android-compiler:2.42")
+
+
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.19.0'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.19.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.0'
 
 
 }
