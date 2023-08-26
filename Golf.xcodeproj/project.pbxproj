@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17294C3C2A99F61B00F7125D /* RunPython.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17294C3B2A99F61B00F7125D /* RunPython.swift */; };
+		174E79142A9A060F00DE2B11 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 174E79132A9A060F00DE2B11 /* PythonKit */; };
+		174E79162A9A14D500DE2B11 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E79152A9A14D500DE2B11 /* api.swift */; };
 		17B7C04D2A99344300E780CD /* GolfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C04C2A99344300E780CD /* GolfApp.swift */; };
 		17B7C04F2A99344300E780CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C04E2A99344300E780CD /* ContentView.swift */; };
 		17B7C0512A99344300E780CD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C0502A99344300E780CD /* Item.swift */; };
@@ -16,9 +19,12 @@
 		17B7C0662A99474B00E780CD /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C0652A99474B00E780CD /* Home.swift */; };
 		17B7C0682A99A86500E780CD /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C0672A99A86500E780CD /* CameraView.swift */; };
 		17B7C06B2A99B51600E780CD /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C06A2A99B51600E780CD /* CameraViewModel.swift */; };
+		17B7C06E2A99E16100E780CD /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 17B7C06D2A99E16100E780CD /* PythonKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17294C3B2A99F61B00F7125D /* RunPython.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunPython.swift; sourceTree = "<group>"; };
+		174E79152A9A14D500DE2B11 /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 		17B7C0492A99344300E780CD /* Golf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Golf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B7C04C2A99344300E780CD /* GolfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfApp.swift; sourceTree = "<group>"; };
 		17B7C04E2A99344300E780CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,12 +43,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				17B7C0632A9945C300E780CD /* Camera-SwiftUI in Frameworks */,
+				17B7C06E2A99E16100E780CD /* PythonKit in Frameworks */,
+				174E79142A9A060F00DE2B11 /* PythonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		174E79072A99F84C00DE2B11 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				174E79152A9A14D500DE2B11 /* api.swift */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		17B7C0402A99344300E780CD = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +78,7 @@
 		17B7C04B2A99344300E780CD /* Golf */ = {
 			isa = PBXGroup;
 			children = (
+				174E79072A99F84C00DE2B11 /* Scripts */,
 				17B7C0692A99B4FB00E780CD /* ViewModel */,
 				17B7C0642A99471600E780CD /* View */,
 				17B7C05F2A993AF800E780CD /* Info.plist */,
@@ -70,6 +87,7 @@
 				17B7C0502A99344300E780CD /* Item.swift */,
 				17B7C0522A99344400E780CD /* Assets.xcassets */,
 				17B7C0542A99344400E780CD /* Preview Content */,
+				17294C3B2A99F61B00F7125D /* RunPython.swift */,
 			);
 			path = Golf;
 			sourceTree = "<group>";
@@ -117,6 +135,8 @@
 			name = Golf;
 			packageProductDependencies = (
 				17B7C0622A9945C300E780CD /* Camera-SwiftUI */,
+				17B7C06D2A99E16100E780CD /* PythonKit */,
+				174E79132A9A060F00DE2B11 /* PythonKit */,
 			);
 			productName = Golf;
 			productReference = 17B7C0492A99344300E780CD /* Golf.app */;
@@ -148,6 +168,7 @@
 			mainGroup = 17B7C0402A99344300E780CD;
 			packageReferences = (
 				17B7C05C2A99388500E780CD /* XCLocalSwiftPackageReference "../Camera-SwiftUI-main" */,
+				174E79122A9A060F00DE2B11 /* XCRemoteSwiftPackageReference "PythonKit" */,
 			);
 			productRefGroup = 17B7C04A2A99344300E780CD /* Products */;
 			projectDirPath = "";
@@ -175,11 +196,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17294C3C2A99F61B00F7125D /* RunPython.swift in Sources */,
 				17B7C04F2A99344300E780CD /* ContentView.swift in Sources */,
 				17B7C0512A99344300E780CD /* Item.swift in Sources */,
 				17B7C0662A99474B00E780CD /* Home.swift in Sources */,
 				17B7C0682A99A86500E780CD /* CameraView.swift in Sources */,
 				17B7C04D2A99344300E780CD /* GolfApp.swift in Sources */,
+				174E79162A9A14D500DE2B11 /* api.swift in Sources */,
 				17B7C06B2A99B51600E780CD /* CameraViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +334,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Golf/Preview Content\"";
@@ -331,8 +356,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = as.Golf;
+				PRODUCT_BUNDLE_IDENTIFIER = asa.Golf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -344,6 +370,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Golf/Preview Content\"";
@@ -364,8 +392,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = as.Golf;
+				PRODUCT_BUNDLE_IDENTIFIER = asa.Golf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -402,10 +431,30 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		174E79122A9A060F00DE2B11 /* XCRemoteSwiftPackageReference "PythonKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pvieito/PythonKit";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		174E79132A9A060F00DE2B11 /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 174E79122A9A060F00DE2B11 /* XCRemoteSwiftPackageReference "PythonKit" */;
+			productName = PythonKit;
+		};
 		17B7C0622A9945C300E780CD /* Camera-SwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "Camera-SwiftUI";
+		};
+		17B7C06D2A99E16100E780CD /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PythonKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

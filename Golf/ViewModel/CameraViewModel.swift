@@ -80,7 +80,7 @@ class CameraViewModel: NSObject, ObservableObject, AVCaptureFileOutputRecordingD
     }
     
     func startRecording() {
-        let tempURL = NSTemporaryDirectory() + "\(Date()).mov"
+        let tempURL = NSTemporaryDirectory() + "\(Date()).mp4"
         output.startRecording(to: URL(fileURLWithPath: tempURL), recordingDelegate: self)
         isRecording = true
     }
