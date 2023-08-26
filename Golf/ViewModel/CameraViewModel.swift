@@ -22,6 +22,8 @@ class CameraViewModel: NSObject, ObservableObject, AVCaptureFileOutputRecordingD
     
     @Published var isRecording: Bool = false
     @Published var recordedURLs: [URL] = []
+    @Published var previewURL: URL?
+    @Published var showPreview: Bool = false
     
     
     func checkPermission() {
@@ -94,5 +96,6 @@ class CameraViewModel: NSObject, ObservableObject, AVCaptureFileOutputRecordingD
             return
         }
         print(outputFileURL)
+        self.previewURL = outputFileURL
     }
 }

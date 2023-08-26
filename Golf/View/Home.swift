@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 extension UIScreen{
    static let screenWidth = UIScreen.main.bounds.size.width
@@ -35,7 +36,7 @@ struct Home: View {
                         
                     } icon:
                     {
-                        Text("Mistakes")
+                        Text("Preview")
                     }.padding(.horizontal, 20)
                         .padding(.vertical, 8)
                         .background{
@@ -74,7 +75,7 @@ struct Home: View {
                 }
                 Spacer()
                 Button(){
-                    
+                    cameraModel.showPreview.toggle()
                 } label: {
                     Label 
                     {
@@ -82,7 +83,7 @@ struct Home: View {
                             .font(.callout)
                     } icon:
                     {
-                        Text("Mistakes")
+                        Text("Preview")
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 8)
@@ -94,7 +95,40 @@ struct Home: View {
                 .frame(maxHeight: 70, alignment: .bottom)
                 .padding(.bottom, 10)
                 .padding(.bottom, 30)
-            }.foregroundColor(.black ).padding(2)
+            }
+            .foregroundColor(.black ).padding(2)
+            
+        }.overlay(content: {
+            if let url = cameraModel.previewURL, cameraModel.showPreview {
+                FinalPreview(url: url, showPreview: $cameraModel.showPreview)
+                    .transition(.move(edge: .trailing))
+            }
+        })
+        .animation(.easeInOut, value: cameraModel.showPreview)
+    }
+}
+
+struct FinalPreview: View {
+    var url: URL
+    @Binding var showPreview: Bool
+    
+    var body: some View {
+        GeometryReader{proxy in
+            let size = proxy.size
+            VideoPlayer(player: AVPlayer(url: url))
+                .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                .frame(width: size.width, height: size.height)
+                .overlay(alignment: .topLeading) {
+                    Button {
+                        showPreview.toggle()
+                    } label: {
+                        Label {
+                            Text("Back")
+                        } icon: {
+                            Image(systemName: "chevron.left")
+                        }
+                    }
+                }
         }
     }
 }
