@@ -13,6 +13,9 @@
 		17B7C0532A99344400E780CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B7C0522A99344400E780CD /* Assets.xcassets */; };
 		17B7C0562A99344400E780CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B7C0552A99344400E780CD /* Preview Assets.xcassets */; };
 		17B7C0632A9945C300E780CD /* Camera-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 17B7C0622A9945C300E780CD /* Camera-SwiftUI */; };
+		17B7C0662A99474B00E780CD /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C0652A99474B00E780CD /* Home.swift */; };
+		17B7C0682A99A86500E780CD /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C0672A99A86500E780CD /* CameraView.swift */; };
+		17B7C06B2A99B51600E780CD /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C06A2A99B51600E780CD /* CameraViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		17B7C0522A99344400E780CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17B7C0552A99344400E780CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		17B7C05F2A993AF800E780CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		17B7C0652A99474B00E780CD /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		17B7C0672A99A86500E780CD /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		17B7C06A2A99B51600E780CD /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,8 @@
 		17B7C04B2A99344300E780CD /* Golf */ = {
 			isa = PBXGroup;
 			children = (
+				17B7C0692A99B4FB00E780CD /* ViewModel */,
+				17B7C0642A99471600E780CD /* View */,
 				17B7C05F2A993AF800E780CD /* Info.plist */,
 				17B7C04C2A99344300E780CD /* GolfApp.swift */,
 				17B7C04E2A99344300E780CD /* ContentView.swift */,
@@ -72,6 +80,23 @@
 				17B7C0552A99344400E780CD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		17B7C0642A99471600E780CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17B7C0652A99474B00E780CD /* Home.swift */,
+				17B7C0672A99A86500E780CD /* CameraView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		17B7C0692A99B4FB00E780CD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				17B7C06A2A99B51600E780CD /* CameraViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +177,10 @@
 			files = (
 				17B7C04F2A99344300E780CD /* ContentView.swift in Sources */,
 				17B7C0512A99344300E780CD /* Item.swift in Sources */,
+				17B7C0662A99474B00E780CD /* Home.swift in Sources */,
+				17B7C0682A99A86500E780CD /* CameraView.swift in Sources */,
 				17B7C04D2A99344300E780CD /* GolfApp.swift in Sources */,
+				17B7C06B2A99B51600E780CD /* CameraViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +320,7 @@
 				INFOPLIST_FILE = Golf/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Путошке необходима камера";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,6 +353,7 @@
 				INFOPLIST_FILE = Golf/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Путошке необходима камера";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
