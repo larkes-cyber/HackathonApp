@@ -51,7 +51,7 @@ def pose_bytearray_model(data_bytearray_pose, frames_of_poses):
     
     distance_between_dots = distance(x1_1, y1_1, x1_4, y1_4)
 
-    if (distance_between_dots >= width*0.1):
+    if (distance_between_dots >= max(width, height)*0.1):
         draw = ImageDraw.Draw(img_p4)
         draw.line((x1_1, y1_1,x1_4,y1_4), fill='green', width=3)
 
