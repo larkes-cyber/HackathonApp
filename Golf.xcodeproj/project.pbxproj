@@ -10,9 +10,9 @@
 		17294C3C2A99F61B00F7125D /* RunPython.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17294C3B2A99F61B00F7125D /* RunPython.swift */; };
 		174E79142A9A060F00DE2B11 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 174E79132A9A060F00DE2B11 /* PythonKit */; };
 		174E79162A9A14D500DE2B11 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E79152A9A14D500DE2B11 /* api.swift */; };
+		178E1E212A9AA94800E23A9C /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178E1E202A9AA94800E23A9C /* StoreView.swift */; };
 		17B7C04D2A99344300E780CD /* GolfApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C04C2A99344300E780CD /* GolfApp.swift */; };
 		17B7C04F2A99344300E780CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C04E2A99344300E780CD /* ContentView.swift */; };
-		17B7C0512A99344300E780CD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B7C0502A99344300E780CD /* Item.swift */; };
 		17B7C0532A99344400E780CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B7C0522A99344400E780CD /* Assets.xcassets */; };
 		17B7C0562A99344400E780CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B7C0552A99344400E780CD /* Preview Assets.xcassets */; };
 		17B7C0632A9945C300E780CD /* Camera-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 17B7C0622A9945C300E780CD /* Camera-SwiftUI */; };
@@ -25,10 +25,10 @@
 /* Begin PBXFileReference section */
 		17294C3B2A99F61B00F7125D /* RunPython.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunPython.swift; sourceTree = "<group>"; };
 		174E79152A9A14D500DE2B11 /* api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
+		178E1E202A9AA94800E23A9C /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		17B7C0492A99344300E780CD /* Golf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Golf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B7C04C2A99344300E780CD /* GolfApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfApp.swift; sourceTree = "<group>"; };
 		17B7C04E2A99344300E780CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		17B7C0502A99344300E780CD /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		17B7C0522A99344400E780CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17B7C0552A99344400E780CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		17B7C05F2A993AF800E780CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -84,7 +84,6 @@
 				17B7C05F2A993AF800E780CD /* Info.plist */,
 				17B7C04C2A99344300E780CD /* GolfApp.swift */,
 				17B7C04E2A99344300E780CD /* ContentView.swift */,
-				17B7C0502A99344300E780CD /* Item.swift */,
 				17B7C0522A99344400E780CD /* Assets.xcassets */,
 				17B7C0542A99344400E780CD /* Preview Content */,
 				17294C3B2A99F61B00F7125D /* RunPython.swift */,
@@ -105,6 +104,7 @@
 			children = (
 				17B7C0652A99474B00E780CD /* Home.swift */,
 				17B7C0672A99A86500E780CD /* CameraView.swift */,
+				178E1E202A9AA94800E23A9C /* StoreView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,11 +198,11 @@
 			files = (
 				17294C3C2A99F61B00F7125D /* RunPython.swift in Sources */,
 				17B7C04F2A99344300E780CD /* ContentView.swift in Sources */,
-				17B7C0512A99344300E780CD /* Item.swift in Sources */,
 				17B7C0662A99474B00E780CD /* Home.swift in Sources */,
 				17B7C0682A99A86500E780CD /* CameraView.swift in Sources */,
 				17B7C04D2A99344300E780CD /* GolfApp.swift in Sources */,
 				174E79162A9A14D500DE2B11 /* api.swift in Sources */,
+				178E1E212A9AA94800E23A9C /* StoreView.swift in Sources */,
 				17B7C06B2A99B51600E780CD /* CameraViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

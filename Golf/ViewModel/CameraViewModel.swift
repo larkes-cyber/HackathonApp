@@ -25,6 +25,8 @@ class CameraViewModel: NSObject, ObservableObject, AVCaptureFileOutputRecordingD
     @Published var previewURL: URL?
     @Published var showPreview: Bool = false
     
+    @Published var isRecordingExists: Bool = false
+    
     
     func checkPermission() {
         
@@ -88,6 +90,7 @@ class CameraViewModel: NSObject, ObservableObject, AVCaptureFileOutputRecordingD
     func stopRecording() {
         output.stopRecording()
         isRecording = false
+        isRecordingExists = true
     }
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {

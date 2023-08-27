@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVKit
+import UIKit
 
 extension UIScreen{
    static let screenWidth = UIScreen.main.bounds.size.width
@@ -14,11 +15,22 @@ extension UIScreen{
    static let screenSize = UIScreen.main.bounds.size
 }
 
+extension Dictionary where Value: Equatable {
+    func findKey(forValue val: Value) -> Key? {
+        return first(where: { $1 == val })?.key
+    }
+}
+
+
 struct Home: View {
     
     @StateObject var cameraModel = CameraViewModel()
     @State var isLoading: Bool = false
-    
+    @State var comment: String = "loading.."
+    @State var view: String = "loading.."
+    @State var error: String = ""
+    @State var frames: [Image] = []
+
     
     var body: some View {
         VStack() {
@@ -28,25 +40,21 @@ struct Home: View {
             // Controls
             HStack() {
                 
-                Button {
-                } label: {
-                    Label {
-                        
+                Button(action: {}){label: do {
+                    Label
+                    {
                         Image(systemName: "chevron.right")
                             .font(.callout)
-                        
                     } icon:
                     {
                         Text("Preview")
-                    }.padding(.horizontal, 20)
-                        .padding(.vertical, 8)
-                        .background{
-                            Capsule().fill(.black)
-                        }
-                    
-                }.frame(maxHeight: 50, alignment: .bottom)
-                    .padding(.bottom, 10)
-                    .padding(.bottom, 30)
+                            .opacity(0)
+                    }
+                    .opacity(0)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 8)
+                    .background{
+                    }}}
                 Spacer()
                 Button {
                     if cameraModel.isRecording {
@@ -76,57 +84,47 @@ struct Home: View {
                     
                 }
                 Spacer()
-//                Button(){
-//                    cameraModel.showPreview.toggle()
-//                } label: {
-//                    Label
-//                    {
-//                        Image(systemName: "chevron.right")
-//                            .font(.callout)
-//                    } icon:
-//                    {
-//                        Text("Preview")
-//                    }
-//                    .padding(.horizontal, 20)
-//                    .padding(.vertical, 8)
-//                    .background{
-//                        Capsule().fill(.white)
-//                    }
-//                }
-//                .onTapGesture {
-//                    Task {
-//                        isLoading = true
-//                        let _url = cameraModel.previewURL
-//                        print(_url, _url?.path())
-//                        await uploadMedia(videoURL: _url!)
-//                        isLoading = false
-//                    }
-//                }
-                Button(action: { uploadMedia(videoURL: cameraModel.previewURL! );cameraModel.showPreview.toggle()}){Text("Analyse").background(.blue)}
-                .frame(maxHeight: 70, alignment: .bottom)
-                .padding(.bottom, 10)
-                .padding(.bottom, 30)
+                Button(action: {
+                    if (cameraModel.isRecordingExists) {
+                        isLoading = true
+                        uploadMedia(videoURL: cameraModel.previewURL!)
+                        print(comment, view, error)
+                        cameraModel.showPreview.toggle()
+                        isLoading = false
+                    }
+                }) { label: do {
+                    Label {
+                        Image(systemName: "chevron.right")
+                            .font(.callout)
+                            .opacity(cameraModel.isRecordingExists ? 1 : 0)
+                    } icon: {
+                        Text("Preview")
+                            .opacity(cameraModel.isRecordingExists ? 1 : 0)
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 8)
+                    .background{
+                        Capsule().fill(.white)
+                            .opacity(cameraModel.isRecordingExists ? 1 : 0)
+                    }
+                }
+                }
+                
+                
             }
-            .foregroundColor(.black ).padding(2)
-            
         }
         .overlay(
             content: {
-                if let url = cameraModel.previewURL, cameraModel.showPreview {
-                    FinalPreview(url: url, showPreview: $cameraModel.showPreview)
+                if isLoading {
+                    LoadingView()
+                } else if let url = cameraModel.previewURL, cameraModel.showPreview {
+                    FinalPreview(url: url, comment: comment, error: error, view: view, showPreview: $cameraModel.showPreview, frames: frames)
                         .transition(.move(edge: .trailing))
                 }
             }
         )
-        .overlay(
-            content: {
-                if isLoading == true {
-                    LoadingView()
-                }
-            }
-        )
         .animation(.easeInOut, value: cameraModel.showPreview)
-    }}
+    }
     
 
 // upload event
@@ -136,42 +134,6 @@ func uploadMedia(videoURL: URL) {
         return
     }
     
-    // Создаем URLRequest с переданным URL
-//    var request = URLRequest(url: requestURL)
-    //        request.httpMethod = "POST"
-    //
-    //        // Устанавливаем заголовок Content-Type для определения типа данных как видео
-    //        request.setValue("video/mp4", forHTTPHeaderField: "Content-Type")
-    //        print(type(of: videoURL))
-    //        // Создаем объект URLSessionUploadTask для отправки файла
-    //        let task = URLSession.shared.uploadTask(with: request, fromFile: videoURL) { (data, response, error) in
-    //            if let error = error {
-    //                print("Ошибка при отправке видео: \(error.localizedDescription)")
-    //                return
-    //            }
-    //
-    //            // Обрабатываем ответ от сервера
-    //            if let httpResponse = response as? HTTPURLResponse {
-    //                if httpResponse.statusCode == 200 {
-    //                    print("Видео успешно отправлено на сервер")
-    //                } else {
-    //                    print("Ошибка сервера. Код ответа: \(httpResponse.statusCode)")
-    //                }
-    //            }
-    //        }
-    //
-    //        // Запускаем задание для отправки видео
-    //        task.resume()
-    
-        
-//        do {
-//            let data = try Data(contentsOf: videoURL)
-//            let base53 = data.base64EncodedString()
-//            let net = Networking()
-//            net.sendPostRequest(to: requestURL, body: data)
-//        } catch {
-//            
-//        }
     do {
         let data = try Data(contentsOf: videoURL)
         let base53 = data.base64EncodedString()
@@ -186,27 +148,55 @@ func uploadMedia(videoURL: URL) {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print(data)
+            
+            let jsonString = String(data: data!, encoding: .utf8)
+            let res_dict = convertToDictionary(text: jsonString!)
+            
+            
+            self.comment = res_dict?["comment"]! as! String
+            self.view = res_dict?["racurs"]! as! String
+            self.error = res_dict?["errors"]! as! String
+            self.frames = [Image(uiImage: UIImage(data: Data(base64Encoded: res_dict?["1"]! as! String)!)!),Image(uiImage: UIImage(data: Data(base64Encoded: res_dict?["2"]! as! String)!)!),Image(uiImage: UIImage(data: Data(base64Encoded: res_dict?["3"]! as! String)!)!),Image(uiImage: UIImage(data: Data(base64Encoded: res_dict?["4"]! as! String)!)!),Image(uiImage: UIImage(data: Data(base64Encoded: res_dict?["5"]! as! String)!)!),Image(uiImage: UIImage(data: Data(base64Encoded: res_dict?["7"]! as! String)!)!),Image(uiImage: UIImage(data: Data(base64Encoded: res_dict?["8"]! as! String)!)!),Image(uiImage: UIImage(data: Data(base64Encoded: res_dict?["10"]! as! String)!)!)]
+//            if self.error != "" {
+//                let sh = saveImage(imageToSave: UIImage(data: Data(base64Encoded: res_dict?["Head movement"]! as! String)!)!, filename: "Head movement.jpg")
+//                //            self.image_head = UIImage(data: res_dict?["Head movement"]! as! Data)!
+//            }
+            
+            
         }.resume()
-    } catch {}
-    
+    } catch {
     }
+    
+} }
 
+func convertToDictionary(text: String) -> [String: Any]? {
+    if let data = text.data(using: .utf8) {
+        do {
+            return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    return nil
+}
 
 
 struct FinalPreview: View {
+    @State var isOpenFrames: Bool = false
     var url: URL
+    var comment: String = "fdjhkdfsjahfdksajh"
+    var error: String = "239fhcmdk"
+    var view: String = "wqopworirq"
     @Binding var showPreview: Bool
+    var frames: [Image]
     
     var body: some View {
         GeometryReader{proxy in
             let size = proxy.size
-            VideoPlayer(player: AVPlayer(url: url))
-                .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                .frame(width: size.width, height: size.height)
-                .overlay(alignment: .topLeading) {
+            HStack{
+                VStack{
+                HStack {
                     Button {
-//                        Py().helloworld()
                         showPreview.toggle()
                     } label: {
                         Label {
@@ -214,12 +204,76 @@ struct FinalPreview: View {
                         } icon: {
                             Image(systemName: "chevron.left")
                         }
-                        .foregroundColor(.white)
+                        .foregroundColor(nil)
                     }
                     .padding(.leading)
                     .padding(.top, 22)
+                    Spacer()
                 }
+                Divider()
+                    if !isOpenFrames{
+                        VideoPlayer(player: AVPlayer(url: url))
+                            .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                            .frame(width: size.width, height: size.height / 2)
+                            .overlay(alignment: .topLeading)
+                        { }
+                        Spacer()}
+                
+                HStack {
+                    Text("Comment")
+                    Spacer()
+                } 
+                .padding(.leading)
+                HStack {
+                    Text(comment)
+                    Spacer()
+                } 
+                .padding(.leading)
+                Spacer()
+                HStack {
+                    Text("View")
+                    Spacer()
+                } 
+                .padding(.leading)
+                HStack {
+                    Text(view)
+                    Spacer()
+                }
+                .padding(.leading)
+                    
+                Spacer()
+                HStack {
+                    Text(error != "" ? "Error" : "")
+                    Spacer()
+                }
+                .padding(.leading)
+                HStack {
+                    Text(error)
+                    Spacer()
+                }
+                .padding(.leading)
+                Button(){
+                    isOpenFrames.toggle()
+                } label: {
+                    Label {
+                        if !isOpenFrames {
+                            Text("Open frames")
+                        } else {
+                            Text("Close frames")
+                        }
+                        
+                    } icon: {
+                        Image(systemName: "photo.on.rectangle")
+                    }
+                    .foregroundColor(nil)
+                }
+                    if isOpenFrames{StoreView(_frames: frames);Spacer()}
+                    
+            }
+            .frame(width: size.width, height: size.height)
+            .background()
         }
+    }
     }
 }
 
@@ -228,31 +282,28 @@ struct LoadingView: View {
         Text("Подождите..")
     }
 }
-struct Networking {
-    var urlSession = URLSession.shared
 
-    func sendPostRequest(
-        to url: URL,
-        body: Data
-//        then handler: @escaping (Result<Data, Error>) -> Void
-    ) {
-        // To ensure that our request is always sent, we tell
-        // the system to ignore all local cache data:
-        var request = URLRequest(
-            url: url,
-            cachePolicy: .reloadIgnoringLocalCacheData
-        )
+func saveImage(imageToSave: UIImage, filename: String) -> URL {
+    if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+        // Создайте имя файла (может быть уникальным, чтобы избежать перезаписи)
+        let fileURL = documentsDirectory.appendingPathComponent(filename)
         
-        request.httpMethod = "POST"
-        request.httpBody = body
-
-        let task = urlSession.dataTask(
-            with: request
-        )
-
-        task.resume()
+        // Преобразуйте UIImage в Data
+        if let imageData = imageToSave.jpegData(compressionQuality: 1.0) {
+            // Сохраните данные в файл
+            do {
+                try imageData.write(to: fileURL)
+                print("Изображение успешно сохранено: \(fileURL)")
+                return fileURL
+            } catch {
+                print("Ошибка при сохранении изображения: \(error)")
+                
+            }
+        }
     }
+    return URL(string: "")!
 }
+
 #Preview {
     Home()
 }
