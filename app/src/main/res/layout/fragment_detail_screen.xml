@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.fragment.detail_screen.DetailScreenFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/imageView0"
+            android:layout_height="match_parent"
+            android:layout_width="270.dp"
+            android:contentDescription=""
+            android:scaleType="centerCrop"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_height="match_parent"
+            android:layout_width="270.dp"
+            android:contentDescription=""
+            android:scaleType="centerCrop"
+            tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_height="match_parent"
+            android:layout_width="270.dp"
+            android:contentDescription=""
+            android:scaleType="centerCrop"
+            tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_height="match_parent"
+            android:layout_width="270.dp"
+            android:contentDescription=""
+            android:scaleType="centerCrop"
+            tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_height="match_parent"
+            android:layout_width="270.dp"
+            android:contentDescription=""
+            android:scaleType="centerCrop"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_height="match_parent"
+            android:layout_width="270.dp"
+            android:contentDescription=""
+            android:scaleType="centerCrop"
+            tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_height="match_parent"
+            android:layout_width="270.dp"
+            android:contentDescription=""
+            android:scaleType="centerCrop"
+            tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_height="match_parent"
+            android:layout_width="270.dp"
+            android:contentDescription=""
+            android:scaleType="centerCrop"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/spinner"-->
+<!--        android:visibility="gone"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/white">-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textSize="20.sp"-->
+<!--            android:text="Подождите немного..."/>-->
+<!--        <ProgressBar-->
+<!--            android:layout_width="25.dp"-->
+<!--            android:layout_height="25.dp"-->
+<!--            />-->
+<!--    </RelativeLayout>-->
+
+</ScrollView>
